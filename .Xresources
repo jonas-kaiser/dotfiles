@@ -1,0 +1,109 @@
+! call xrdb ~/.Xresources after editing!
+
+! set x cursor size
+Xcursor.size: 16
+
+*cursorColor:       darkolivegreen3
+URxvt.cursorColor:  darkolivegreen3
+*background:        #000000
+*foreground:        #d8d3c9
+!URxvt.background:   [80]#000000
+! Use matching background in dwm!
+URxvt.background:   [64]#080808
+URxvt.depth:        32
+! 14 is good for laptop monitor, 12 is good for big screen
+URxvt.font:         xft:monospace:size=13,xft:unifont:style=Medium:antialias=false
+URxvt.scrollBar:    false
+URxvt.urgentOnBell: true
+
+!! Colors original
+!! black
+!*color0:    #000000
+!*color8:    #404040
+!! red
+!*color1:    #CD0000
+!*color9:    #FF0000
+!! green
+!*color2:    #00CD00
+!*color10:   #00FF00
+!! yellow
+!*color3:    #CDCD00
+!*color11:   #FFFF00
+!! blue
+!*color4:    #0000CD
+!*color12:   #0000FF
+!! magenta
+!*color5:    #CD00CD
+!*color13:   #EF00EF
+!! cyan
+!*color6:    #00CDCD
+!*color14:   #00FDFD
+!! white
+!*color7:    #FAEBD7
+!*color15:   #FFFFFF
+
+!! dkeg-blok (orig background = #2c2a2b)
+!URxvt.background:   [80]#000000
+!*background:        #000000
+!*foreground:        #baad8a
+!*color0:    #000000
+!*color8:    #545253
+!! red
+!*color1:    #a67979
+!*color9:    #a67979
+!! green
+!*color2:    #809f7b
+!*color10:   #809f7b
+!! yellow
+!*color3:    #baad8a
+!*color11:   #baad8a
+!! blue
+!*color4:    #6d7575
+!*color12:   #6d7575
+!! magenta
+!*color5:    #7d6969
+!*color13:   #7d6969
+!! cyan
+!*color6:    #7b9899
+!*color14:   #7b9899
+!! white
+!*color7:    #bab9ba
+!*color15:   #bab9ba
+
+! Apprentice (orange 210, ff8787 instead of ff8700)
+*.foreground: #BCBCBC
+*.background: #262626
+*.color0:     #1C1C1C
+*.color8:     #444444
+*.color1:     #AF5F5F
+*.color9:     #FF8787
+*.color2:     #5F875F
+*.color10:    #87AF87
+*.color3:     #87875F
+*.color11:    #FFFFAF
+*.color4:     #5F87AF
+*.color12:    #8FAFD7
+*.color5:     #5F5F87
+*.color13:    #8787AF
+*.color6:     #5F8787
+*.color14:    #5FAFAF
+!! Changed white fg !
+!*.color7:     #6C6C6C
+*color7:    #EEEEEE
+*.color15:    #FFFFFF
+
+! Extensions
+URxvt.perl-ext-common:  default,matcher,resize-font,url-select,keyboard-select
+URxvt.colorUL:          #4682b4
+! url-select
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.url-select.launcher:  linkhandler
+URxvt.url-select.underline: true
+! keyboard-select
+URxvt.keysym.M-Escape:  perl:keyboard-select:activate
+! resize-font
+URxvt.resize-font.smaller:  C-Up
+URxvt.resize-font.bigger:   C-Down
+! Matcher
+URxvt.url-launcher:     linkhandler
+URxvt.matcher.button:   1
