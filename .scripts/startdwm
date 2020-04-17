@@ -1,0 +1,8 @@
+#!/bin/bash
+
+while true; do
+	# (re)launch nm-applet if necessary
+	pgrep -x nm-applet || nm-applet &
+	# Log stderror to a file
+	dwm 2> ~/.dwm.log
+done
