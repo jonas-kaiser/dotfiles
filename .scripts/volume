@@ -1,0 +1,91 @@
+#!/bin/bash
+
+# Script to control volume.
+# Sends a signal to i3blocks and writes changes to a fifo (e.g. for xmobar)
+
+# Usage: volume [up <value>|down <value>|mute|unmute|toggle|update]
+
+help() {
+    echo "Usage: $0 [get|up <value>|down <value>|mute|unmute|toggle|update]"
+}
+
+###############################################################################
+## Using ALSA
+###############################################################################
+#
+#case $1 in
+#    "up") amixer set Master unmute ${2}+;;
+#    "down") amixer set Master unmute ${2}-;;
+#    "mute") amixer set Master mute;;
+#    "unmute") amixer set Master unmute;;
+#    "toggle") amixer set Master toggle;;
+#    "get") amixer get Master;;
+#    "update") ;;
+#    *) help;;
+#esac
+#
+#
+## Send signal to i3blocks if it's running
+#pgrep -x i3blocks && pkill -RTMIN+10 i3blocks
+#
+#
+## Write current volume into a fifo
+#vol=$(amixer get Master | grep -E -o [0-9]+% | rev | cut -c 2- | rev)
+#
+#if [[ $(amixer get Master | tail -n1 | awk '{print $NF}') == "[off]" ]]; then
+#    #echo "🔇 ($vol)"
+#    echo "<fn=1>🔇</fn>: MUTE" > $HOME/.vol
+#else
+#    #echo "🔊 $vol"
+#    if (($vol < 30)); then sym="🔈"
+#    elif (($vol < 60)); then sym="🔉"
+#    else sym="🔊"; fi
+#
+#    echo "<fn=1>${sym}</fn>: ${vol}%" > $HOME/.vol
+#fi
+
+
+
+###############################################################################
+## Using pulseaudio
+###############################################################################
+
+case $1 in
+    "up") pamixer -u -i $2;;
+    "down") pamixer -u -d $2;;
+    "mute") pamixer -m;;
+    "unmute") pamixer -u;;
+    "toggle") pamixer -t;;
+    "get") #pamixer --get-volume;;
+	if $(pamixer --get-mute); then
+		echo "muted ($(pamixer --get-volume))";
+	else
+		echo "$(pamixer --get-volume)";
+	fi;;
+    "update") ;;
+    *) help;;
+esac
+
+
+## Send signal to i3blocks if it's running
+#pgrep -x i3blocks && pkill -RTMIN+10 i3blocks
+#
+#
+## Write current volume into a fifo
+#vol=$(pamixer --get-volume)
+#
+#if $(pamixer --get-mute); then
+#    #echo "🔇 ($vol)"
+#    #echo "<fn=1>🔇</fn>: MUTE" > $HOME/.vol
+#    echo "<fn=1>🔇</fn>: MUTE" > /tmp/vol &
+#    # FIXME why can't acpid write to this file?!?!?
+#else
+#    #echo "🔊 $vol"
+#    if (($vol < 30)); then sym="🔈"
+#    elif (($vol < 60)); then sym="🔉"
+#    else sym="🔊"; fi
+#
+#    # run in background in order to not block if pipe isn't read imediatly
+#    #echo "<fn=1>${sym}</fn>: ${vol}%" > $HOME/.vol &
+#    echo "<fn=1>${sym}</fn>: ${vol}%" > /tmp/vol &
+#fi
