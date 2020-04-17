@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# A dmenu binary prompt script
+# Gives a dmenu prompt labeled with $1 to perform command $2.
+# For example:
+# './prompt "Do you want to shutdown?" "shutdown -P now"'
+
+# if a pywal colorscheme is available, use it.
+#if [[ -f ~/.cache/wal/colors.sh ]]; then
+#    . "${HOME}/.cache/wal/colors.sh"
+#
+#    [ $(echo -e "No\nYes" | dmenu -nb "$color0" -nf "$color15" \
+#        -sb "$color1" -sf "$color15" -i -fn "monospace:size=15" \
+#        -p "$1") == "Yes" ] && $2
+#else
+[ $(echo -e "No\nYes" | dmenu -i -fn "monospace:size=15" -p "$1") \
+    == "Yes" ] && $2
+#fi
