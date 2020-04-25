@@ -1,0 +1,27 @@
+# Folders for the shortcut generator script
+M       /media
+#M       /mnt
+e       /etc
+r       /
+
+h       ~/
+a       ~/Downloads/AUR_Builds
+b       ~/build
+dwm     ~/build/dwm
+slock   ~/build/slock
+D       ~/Downloads
+t       ~/Downloads/Torrents
+d       ~/Documents
+m       ~/Music
+w       ~/Pictures/Wallpapers
+Sc      ~/Pictures/Screenshots
+s       ~/.scripts
+St      ~/Studium/19-20--WiSe
+p       ~/Studium/19-20--WiSe
+H       ~/Studium/HorsePower
+j       ~/Studium/HorsePower
+P       ~/Projects
+l       ~/Projects/NXT/lejos
+c       ~/.config
+v       ~/.vim
+V       ~/Videos

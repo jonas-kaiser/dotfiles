@@ -1,0 +1,6 @@
+bd0     if [ -f ~/.cache/wal/schemes/_home_jonas__config_wall_png_dark_None_None_1.1.0.json ]; then rm ~/.cache/wal/schemes/_home_jonas__config_wall_png_dark_None_None_1.1.0.json; fi && wal -t -i ~/.config/wall.png -a=65
+bd1     wal -t --theme base16-eighties -b 000000 -a 65
+bd2     wal -t --theme base16-ocean -b 000000 -a 65
+#bd3     wal -t --theme dkeg-blok -b 000000 -a 65
+bd3     wal -t --theme ~/colorscheme3
+br      random_background.sh

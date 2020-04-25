@@ -1,0 +1,14 @@
+cff     ~/.scripts/shortcuts/folders
+cfc     ~/.scripts/shortcuts/configs
+cfo     ~/.scripts/shortcuts/others
+
+cfb     ~/.bashrc
+cfr     ~/.config/ranger/rc.conf
+cfi     ~/.config/i3/config
+cfl     ~/.config/i3blocks/config
+cfm     ~/.config/neomutt/neomuttrc
+cfp     ~/.config/polybar/config
+cfd     ~/.Xresources
+cfx     ~/.xmonad/xmonad.hs
+cfxb    ~/.xmobarrc
+cfa     ~/.config/awesome/rc.lua
