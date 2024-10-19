@@ -11,12 +11,13 @@ setxkbmap -option caps:escape
 #xmodmap -e "remove mod1 = Alt_R" -e "add mod4 = Alt_R"
 
 # make tab and backslash extra mod keys when held down
-xmodmap -e "keycode 23 = Hyper_L"
-xmodmap -e "keycode any = Tab"
-xmodmap -e "keysym backslash = Hyper_R bar"
+# dont use Hyper_L and R keys, just map to Super. Hyper uses a different modifier level than super since recent xkeyboard update
+xmodmap -e "keycode 23 = Super_L"
+xmodmap -e "keycode any = Tab"		# map tab to an unused keycode so xcape can use it. (I dont understand it but its necessary)
+xcape -e "#23=Tab" -t 400
+xmodmap -e "keycode 51 = Super_R bar"
 xmodmap -e "keycode any = backslash"
-xcape -e "Hyper_L=Tab" -t 400
-xcape -e "Hyper_R=backslash" -t 130
+xcape -e "#51=backslash" -t 130
 
 xset r rate 220 60
 
