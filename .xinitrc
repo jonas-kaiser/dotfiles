@@ -44,31 +44,27 @@ xrandr -q | grep "HDMI1 connected" && xrandr \
 	#--output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 304x1440 --rotate normal
 
 
+# needs tryones picom fork (from aur)
+compositor="picom -b --xrender-sync-fence --backend glx --blur-method dual_kawase --experimental-backends --blur-background-exclude !(class_g='URxvt') --blur-strength 10"
+
 # -- Window Managers -- #
 wm=dwm
-# needs tryones compton fork!
-comptoncmd="compton -b --xrender-sync-fence --blur-background --blur-method kawase --blur-strength 10 --blur-background-exclude !(class_g='URxvt')"
 
 case $wm in
 	i3) exec i3;;
 	xmonad)
 		~/.fehbg;
 		xsetroot -cursor_name left_ptr;
-		#compton -b --xrender-sync-fence;
-		$comptoncmd;
+		$compositor
 		exec xmonad;;
 	awesome)
-		~/.fehbg;
-		# needs tryones compton fork, breaks with multihead setup
-		#compton -b --xrender-sync-fence --blur-background --blur-method kawase --blur-strength 10;
-		compton -b --xrender-sync-fence;
+		#~/.fehbg;
+		$compositor
 		exec awesome;;
 	dwm)
 		~/.fehbg;
 		dwm_status.sh &
-		# needs tryones compton fork, breaks with multihead setup
-		#compton -b --xrender-sync-fence --blur-background --blur-method kawase --blur-strength 10;
-		$comptoncmd;
+		$compositor
 		exec startdwm;; # starts dwm in a loop
 	#*) echo "error, no wm selected!"
 esac
